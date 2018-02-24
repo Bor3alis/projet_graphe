@@ -37,6 +37,13 @@ let affiche_sommets l =
     List.map (fun v -> Vertex.indice (V.label v)) l;;
 
 
+
+
+let rec rm_doublon l = function
+
+    |[] -> l
+    |h::t -> if(List.mem h l) then rm_doublon l t else rm_doublon (h::l) t;;
+
 (************************************************************)
 
 (* 1 Operation sur les graphes *)
@@ -60,35 +67,80 @@ Mark.get obj1_1v2 = 0;;
 
 print_string "============================= TEST CONTRACT  =======================\n";;
 
+(**********************************************)
+print_string "---------------------------------\n";;
 
-let lv = contract obj1_1 obj1_1v1 obj1_1v2;;
-let lv2 = contract obj1_2 obj1_2v1 obj1_2v3;;
+let a = ordered_succ obj1_1 obj1_1v1 in
+    affiche_sommets a;;
+let b = ordered_succ obj1_1 obj1_1v2 in
+    affiche_sommets b;;
 
-let l1 = get_succ_except_a lv obj1_1v1 ;;
-let l2 = get_succ_except_a lv2 obj1_2v1;;
+let lc1 = contract obj1_1 obj1_1v1 obj1_1v2;;
 
-affiche_sommets l1;;
-affiche_sommets lv;;
+let res = ordered_succ obj1_1 obj1_1v1 in
+    affiche_sommets res;;
+
+print_string "---------------------------------\n";;
+
+(**********************************************)
+print_string "---------------------------------\n";;
+
+let a = ordered_succ obj1_2 obj1_2v1 in
+       affiche_sommets a;;
+let b = ordered_succ obj1_2 obj1_2v3 in
+        affiche_sommets b;;
+
+let lc2 = contract obj1_2 obj1_2v1 obj1_2v3;;
+
+let res = ordered_succ obj1_2 obj1_2v1 in
+        affiche_sommets res;;
 
 affiche_sommets l2;;
-affiche_sommets lv2;;
+affiche_sommets lres2;;
 
-(*equal_listes l1 lv;;
-equal_listes l2 lv2;;*)
+print_string "---------------------------------\n";;
+
+(**********************************************)
+
+let a = ordered_succ obj1_3 obj1_3v2 in
+    affiche_sommets a;;
+let b = ordered_succ obj1_3 obj1_3v6 in
+        affiche_sommets b;;
+
+
+(*let lres3 = let l = get_succ_except_a l31 obj1_3v6 in
+            let l2 = get_succ_except_a l32 obj1_3v2 in
+            l@l2;; *)
+
+let lc3 = contract obj1_3 obj1_3v2 obj1_3v6;;
+let res = ordered_succ obj1_3 obj1_3v2 in
+    affiche_sommets res;;
+
+print_string "---------------------------------\n";;
 
 print_string "============================= TEST INSERT  =======================\n";;
 
-let l3 = ordered_succ obj1_1 obj1_1v1;;
-affiche_sommets l3;;
+print_string "---------------------------------\n";;
+let a = ordered_succ obj1_1 obj1_1v1 in
+affiche_sommets a;;
+affiche_sommets lc1;;
 
-insert obj1_1 obj1_1v1 obj1_1v2 lv;;
-insert obj1_2 obj1_2v1 obj1_2v3 lv2;;
+insert obj1_1 obj1_1v1 obj1_1v2 lc1;;
 
-let l3_1 = ordered_succ obj1_1 obj1_1v1;;
-affiche_sommets l3_1;;
+let b = ordered_succ obj1_1 obj1_1v1 in
+affiche_sommets b;;
+print_string "---------------------------------\n";;
 
-(*let l4 = ordered_succ obj1_1 obj1_1v2;;
-affiche_sommets l4;;*)
+
+let a = ordered_succ obj1_2 obj1_2v1 in
+affiche_sommets a;;
+affiche_sommets lc2;;
+
+insert obj1_2 obj1_2v1 obj1_2v3 lc2;;
+
+let b = ordered_succ obj1_2 obj1_2v1 in
+affiche_sommets b;;
+print_string "---------------------------------\n";;
 
 
 
