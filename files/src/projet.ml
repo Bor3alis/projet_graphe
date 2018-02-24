@@ -69,10 +69,10 @@ let rec equals_aux g1 v1 g2 v2 =
 				   let (bq,lq) = equals_aux g1 v1 g2 v2 in
 				   (separate a1 a2;
 				   let lf = lh@lq in
-				   (bh && bq, (a1,a2)::lf));;
+				   (bh && bq, (a1,a2)::lf))
 
 
-let equals g1 v1 g2 v2 = 
+    and equals g1 v1 g2 v2 = 
 	associate v1 v2;
 	let (b,lr) = equals_aux g1 v1 g2 v2 in
 	let l = (v1,v2)::lr in
