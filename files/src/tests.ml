@@ -32,10 +32,14 @@ let rec equal_listes l1 l2 =
     |t1::q1, t2::q2 -> (t1==t2) && (equal_listes q1 q2);;
 
 (* affiche_sommets
- * sémantique : affiche la liste de sommets *)
+ * sémantique : affiche la liste des sommets *)
 let affiche_sommets l =
     List.map (fun v -> Vertex.indice (V.label v)) l;;
 
+(* affiche_arête
+ * sémantique : affiche la liste des arêtes *)
+let affiche_arete l =
+    List.map (fun (v1,v2) -> (Vertex.indice (V.label v1), Vertex.indice (V.label v2))) l;;
 
 
 
@@ -95,8 +99,8 @@ let lc2 = contract obj1_2 obj1_2v1 obj1_2v3;;
 let res = ordered_succ obj1_2 obj1_2v1 in
         affiche_sommets res;;
 
-affiche_sommets l2;;
-affiche_sommets lres2;;
+(*affiche_sommets l2;;
+affiche_sommets lres2;;*)
 
 print_string "---------------------------------\n";;
 
@@ -144,5 +148,10 @@ print_string "---------------------------------\n";;
 
 
 
+print_string "============================= TEST DISTANCE  =======================\n";;
+equals obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
 
+let (c,l0,l1,l2) = distance obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
 
+affiche_arete l1;;
+affiche_arete l2;;
