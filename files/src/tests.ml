@@ -74,7 +74,7 @@ print_string "============================= TEST CONTRACT  =====================
 (**********************************************)
 print_string "---------------------------------\n";;
 
-let a = ordered_succ obj1_1 obj1_1v1 in
+(*let a = ordered_succ obj1_1 obj1_1v1 in
     affiche_sommets a;;
 let b = ordered_succ obj1_1 obj1_1v2 in
     affiche_sommets b;;
@@ -82,14 +82,14 @@ let b = ordered_succ obj1_1 obj1_1v2 in
 let lc1 = contract obj1_1 obj1_1v1 obj1_1v2;;
 
 let res = ordered_succ obj1_1 obj1_1v1 in
-    affiche_sommets res;;
+    affiche_sommets res;;*)
 
 print_string "---------------------------------\n";;
 
 (**********************************************)
 print_string "---------------------------------\n";;
 
-let a = ordered_succ obj1_2 obj1_2v1 in
+(*let a = ordered_succ obj1_2 obj1_2v1 in
        affiche_sommets a;;
 let b = ordered_succ obj1_2 obj1_2v3 in
         affiche_sommets b;;
@@ -100,13 +100,13 @@ let res = ordered_succ obj1_2 obj1_2v1 in
         affiche_sommets res;;
 
 (*affiche_sommets l2;;
-affiche_sommets lres2;;*)
+affiche_sommets lres2;;*) *)
 
 print_string "---------------------------------\n";;
 
 (**********************************************)
 
-let a = ordered_succ obj1_3 obj1_3v2 in
+(*let a = ordered_succ obj1_3 obj1_3v2 in
     affiche_sommets a;;
 let b = ordered_succ obj1_3 obj1_3v6 in
         affiche_sommets b;;
@@ -146,7 +146,7 @@ let b = ordered_succ obj1_2 obj1_2v1 in
 affiche_sommets b;;
 print_string "---------------------------------\n";;
 
-
+*)
 
 print_string "============================= TEST DISTANCE  =======================\n";;
 equals obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
@@ -155,3 +155,5 @@ let (c,l0,l1,l2) = distance obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
 
 affiche_arete l1;;
 affiche_arete l2;;
+
+

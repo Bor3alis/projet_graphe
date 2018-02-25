@@ -92,17 +92,17 @@ let rec distance_aux g1 v1 g2 v2 =
     |[],t::q -> let lv = contract g2 v2 t in
                 let (c,l0,l1,l2) = distance_aux g1 v1 g2 v2 in
                 insert g2 v2 t lv;
-                (c+1,l0,l1,(v2,t)::l2);
+                (1,l0,l1,(v2,t)::l2);
 
     |t::q,[] -> let lv = contract g1 v1 t in
                 let (c,l0,l1,l2) = distance_aux g1 v1 g2 v2 in
                 insert g1 v1 t lv;
-                (c+1,l0,(v1,t)::l1,l2);
+                (1,l0,(v1,t)::l1,l2);
 
     |t1::q1,t2::q2 -> associate t1 t2;
                       let (c1,l01,l11,l21) = distance_aux g1 t1 g2 t2 in
                       let (c2,l02,l12,l22) = distance_aux g1 v1 g2 v2 in
-                      separate t1 t2;
+                        separate t1 t2;
                       let lf = l01@l02 in
                       let lf1 = l11@l12 in
                       let lf2 = l21@l22 in
@@ -119,11 +119,6 @@ let distance g1 v1 g2 v2 =
     (c,lf,l1,l2);;
 
 
-equals obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
-
-distance obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
-
-(*Section 4*)
 
 let distance_opti g1 v1 g2 v2 = (0,[],[],[]);;
 
