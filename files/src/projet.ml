@@ -85,7 +85,7 @@ let rec equals_aux g1 v1 g2 v2 =
 
 let rec distance_aux g1 v1 g2 v2 = 
     let s1 =  unmarked (ordered_succ g1 v1) in
-    let s2 = unmarked (ordered_succ g2 v2) in
+    let s2 =  unmarked (ordered_succ g2 v2) in
 
     match s1, s2 with
     |[],[] -> (0,[],[],[])

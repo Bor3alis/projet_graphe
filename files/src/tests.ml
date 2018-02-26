@@ -148,7 +148,50 @@ print_string "---------------------------------\n";;
 
 *)
 
-print_string "============================= TEST DISTANCE  =======================\n";;
+print_string "============================= TEST EQUALS  =======================\n" ;;
+(* Dans ces test, on ne vérifie que le booléen renvoyé par la fonction equals et non
+la liste des associations de noeuds *)
+(* tests sur l'objet 1 *)
+print_string "---------------------------------\n";;
+let (b1, l1) = equals obj1_1 obj1_1v5 obj1_2 obj1_2v4 in affiche_arete l1;;
+let (b2, l2) = equals obj1_1 obj1_1v5 obj1_3 obj1_3v3 in affiche_arete l2;;
+let (b3, l3) = equals obj1_2 obj1_2v4 obj1_3 obj1_3v3 in b3;;
+
+(* tests sur l'objet 2 *)
+let (b6, l6) = equals obj2_1 obj2_1v3 obj2_2 obj2_2v1 in b6;;
+
+print_string "---------------------------------\n";;
+(* tests entre objet 1 et objet 2 *)
+let (b4, l4) = equals obj1_1 obj1_1v5 obj2_1 obj2_1v3 in  not b4;;
+let (b5, l5) = equals obj2_2 obj2_2v1 obj1_3 obj1_3v3 in not b5 ;;
+
+
+
+
+print_string "============================= TEST DISTANCE  =======================\n" ;;
+(* Dans ces test, on ne vérifie que le nombre c d'éditions nécéssaires pour passer d'un 
+graphe à l'autre *)
+(* tests de c *)
+(* tests sur l'objet 1 *)
+print_string "---------------------------------\n";;
+let (c1, l01, l11, l21) = distance obj1_1 obj1_1v5 obj1_2 obj1_2v4 in c1 = 0;;
+let (c2, l02, l12, l22) = distance obj1_1 obj1_1v5 obj1_3 obj1_3v3 in c2 = 0;;
+let (c3, l03, l13, l23) = distance obj1_2 obj1_2v4 obj1_3 obj1_3v3 in c3 = 0;;
+
+(* tests sur l'objet 2 *)
+let (c4, l04, l14, l24) = distance obj2_1 obj2_1v3 obj2_2 obj2_2v1 in c4 = 0;;
+
+print_string "---------------------------------\n";;
+(* tests entre objet 1 et objet 2 *)
+let (c5, l05, l15, l25) = distance obj1_1 obj1_1v5 obj2_1 obj2_1v3 in  c5 <> 0 (* TODO *);;
+let (c6, l06, l16, l26) = distance obj2_2 obj2_2v1 obj1_3 obj1_3v3 in  c6 <> 0 (* TODO *);;
+
+(* tests de l0  : TODO *)
+(* tests de l1  : TODO *)
+(* tests de l2  : TODO *)
+
+
+
 equals obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
 
 let (c,l0,l1,l2) = distance obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
