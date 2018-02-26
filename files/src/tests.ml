@@ -153,12 +153,12 @@ print_string "============================= TEST EQUALS  =======================
 la liste des associations de noeuds *)
 (* tests sur l'objet 1 *)
 print_string "---------------------------------\n";;
-let (b1, l1) = equals obj1_1 obj1_1v5 obj1_2 obj1_2v4 in affiche_arete l1;;
-let (b2, l2) = equals obj1_1 obj1_1v5 obj1_3 obj1_3v3 in affiche_arete l2;;
-let (b3, l3) = equals obj1_2 obj1_2v4 obj1_3 obj1_3v3 in b3;;
+let (b1, l1) = equals obj1_1 obj1_1v5 obj1_2 obj1_2v4 in b1;;
+let (b2, l2) = equals obj1_1 obj1_1v5 obj1_3 obj1_3v3 in not b2;;
+let (b3, l3) = equals obj1_2 obj1_2v4 obj1_3 obj1_3v3 in not b3;;
 
 (* tests sur l'objet 2 *)
-let (b6, l6) = equals obj2_1 obj2_1v3 obj2_2 obj2_2v1 in b6;;
+let (b6, l6) = equals obj2_1 obj2_1v3 obj2_2 obj2_2v1 in not b6;;
 
 print_string "---------------------------------\n";;
 (* tests entre objet 1 et objet 2 *)
@@ -175,11 +175,11 @@ graphe à l'autre *)
 (* tests sur l'objet 1 *)
 print_string "---------------------------------\n";;
 let (c1, l01, l11, l21) = distance obj1_1 obj1_1v5 obj1_2 obj1_2v4 in c1 = 0;;
-let (c2, l02, l12, l22) = distance obj1_1 obj1_1v5 obj1_3 obj1_3v3 in c2 = 0;;
-let (c3, l03, l13, l23) = distance obj1_2 obj1_2v4 obj1_3 obj1_3v3 in c3 = 0;;
+let (c2, l02, l12, l22) = distance obj1_1 obj1_1v5 obj1_3 obj1_3v3 in c2 = 2;;
+let (c3, l03, l13, l23) = distance obj1_2 obj1_2v4 obj1_3 obj1_3v3 in c3 = 2;;
 
 (* tests sur l'objet 2 *)
-let (c4, l04, l14, l24) = distance obj2_1 obj2_1v3 obj2_2 obj2_2v1 in c4 = 0;;
+let (c4, l04, l14, l24) = distance obj2_1 obj2_1v3 obj2_2 obj2_2v1 in c4 = 2;;
 
 print_string "---------------------------------\n";;
 (* tests entre objet 1 et objet 2 *)
