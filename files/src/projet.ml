@@ -157,8 +157,7 @@ and marquage g1 a1 g2 a2 v1 v2 =
 	associate a1 a2;
 	let (c1,l01,l11,l21) = distance_aux g1 a1 g2 a2 in
 	let (c2,l02,l12,l22) = distance_aux g1 v1 g2 v2 in
-	(
-	separate a1 a2;
+	(separate a1 a2;
 	let lf = l01@l02 in
 	let lf1 = l11@l12 in
 	let lf2 = l21@l22 in
@@ -186,7 +185,71 @@ and distance g1 v1 g2 v2 =
     (c,lf,l1,l2);;
     
     
+ 
     
-	let distance_opti g1 v1 g2 v2 = (0,[],[],[]);;
+
+
+let rec distance_opti_aux g1 v1 g2 v2 c_max =
+	let s1 = unmarked (ordered_succ g1 v1) in
+	let s2 = unmarked (ordered_succ g2 v2) in
+	match s1,s2 with
+	|[], [] -> ((0,[],[],[]))
+	|[],t::q -> (let lv = contract g2 v2 t in
+                let (c,l0,l1,l2) = distance_aux g1 v1 g2 v2 in
+                insert g2 v2 t lv;
+                (c+1,l0,l1,(v2,t)::l2))
+                
+
+    |t::q,[] -> (let lv = contract g1 v1 t in
+                let (c,l0,l1,l2) = distance_aux g1 v1 g2 v2 in
+                insert g1 v1 t lv;
+                (c+1,l0,(v1,t)::l1,l2))
+
+	|a1::reste1, a2::reste2 -> 
+				   let (c_marq, l0_marq, l1_marq, l2_marq) = marquage g1 a1 g2 a2 v1 v2 in 
+				   let (c_contract_d, l0_contract_d, l1_contract_d, l2_contract_d) = contract_d g2 a2 v2 g1 a1 v1 in 
+				   let (c_contract_g, l0_contract_g, l1_contract_g, l2_contract_g) = contract_g g2 a2 v2 g1 a1 v1 in
+				   
+
+				   if (c_marq <= c_contract_d) && (c_marq <= c_contract_g) then
+						(c_marq, l0_marq, l1_marq, l2_marq)
+				   else (if (c_contract_d <= c_marq) && (c_contract_d <= c_contract_g) then
+						(c_contract_d, l0_contract_d, l1_contract_d, l2_contract_d)
+				   else
+						(c_contract_g, l0_contract_g, l1_contract_g, l2_contract_g))
+				   
+
+
+
+and marquage g1 a1 g2 a2 v1 v2 =
+	associate a1 a2;
+	let (c1,l01,l11,l21) = distance_aux g1 a1 g2 a2 in
+	let (c2,l02,l12,l22) = distance_aux g1 v1 g2 v2 in
+	(separate a1 a2;
+	let lf = l01@l02 in
+	let lf1 = l11@l12 in
+	let lf2 = l21@l22 in
+	(c1+c2,(a1,a2)::lf,lf1,lf2))
+
+and contract_d g2 a2 v2 g1 a1 v1=
+	let liste_c = contract g2 v2 a2 in 
+	let (c,l0,l1,l2) = distance_aux g1 v1 g2 v2 in
+	(insert g2 v2 a2 liste_c ;
+	(c+1,l0,l1,(v2,a2)::l2))
+	
+and contract_g g2 a2 v2 g1 a1 v1=
+	let liste_c = contract g1 v1 a1 in 
+	let (c,l0,l1,l2) = distance_aux g1 v1 g2 v2 in
+	(insert g1 v1 a1 liste_c ;
+	(c+1,l0,(v1,a1)::l1,l2))
+	
+
+	
+and distance_opti g1 v1 g2 v2 = 
+    associate v1 v2;
+    let (c,l0,l1,l2) = distance_aux g1 v1 g2 v2 in
+    let lf = (v1,v2)::l0 in
+    separate v1 v2;
+    (c,lf,l1,l2);;
 
 
