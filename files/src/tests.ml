@@ -100,13 +100,18 @@ let res = ordered_succ obj1_2 obj1_2v1 in
         affiche_sommets res;;
 
 (*affiche_sommets l2;;
-affiche_sommets lres2;;*) *)
+affiche_sommets lres2;;*) 
 
+let c = insert obj1_2 obj1_2v1 obj1_2v3 lc2;;
 print_string "---------------------------------\n";;
 
+let a = ordered_succ obj1_2 obj1_2v1 in
+       affiche_sommets a;;
+let b = ordered_succ obj1_2 obj1_2v3 in
+        affiche_sommets b;;*)
 (**********************************************)
-
-(*let a = ordered_succ obj1_3 obj1_3v2 in
+(*
+let a = ordered_succ obj1_3 obj1_3v2 in
     affiche_sommets a;;
 let b = ordered_succ obj1_3 obj1_3v6 in
         affiche_sommets b;;
@@ -117,15 +122,16 @@ let b = ordered_succ obj1_3 obj1_3v6 in
             l@l2;; *)
 
 let lc3 = contract obj1_3 obj1_3v2 obj1_3v6;;
+affiche_sommets lc3;;
 let res = ordered_succ obj1_3 obj1_3v2 in
     affiche_sommets res;;
-
+    *)
 print_string "---------------------------------\n";;
 
 print_string "============================= TEST INSERT  =======================\n";;
 
 print_string "---------------------------------\n";;
-let a = ordered_succ obj1_1 obj1_1v1 in
+(*let a = ordered_succ obj1_1 obj1_1v1 in
 affiche_sommets a;;
 affiche_sommets lc1;;
 
@@ -145,8 +151,8 @@ insert obj1_2 obj1_2v1 obj1_2v3 lc2;;
 let b = ordered_succ obj1_2 obj1_2v1 in
 affiche_sommets b;;
 print_string "---------------------------------\n";;
-
 *)
+
 
 print_string "============================= TEST EQUALS  =======================\n" ;;
 (* Dans ces test, on ne vérifie que le booléen renvoyé par la fonction equals et non
@@ -195,7 +201,7 @@ let (c6, l06, l16, l26) = distance obj2_2 obj2_2v1 obj1_3 obj1_3v3 in  c6 <> 0 (
 equals obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
 
 let (c,l0,l1,l2) = distance obj1_1 obj1_1v5 obj1_3 obj1_3v3;;
-
+affiche_arete l0;;
 affiche_arete l1;;
 affiche_arete l2;;
 
