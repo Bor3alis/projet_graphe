@@ -100,6 +100,8 @@ let lc1 = contract obj1_1 obj1_1v1 obj1_1v2;;
 let res = ordered_succ obj1_1 obj1_1v1 in
     affiche_sommets res;;
 
+
+
 print_string "---------------------------------\n";;
 
 (**********************************************)
