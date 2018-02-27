@@ -62,6 +62,15 @@ associate obj1_1v1 obj1_1v2;;
 Mark.get obj1_1v1 = 2;;
 Mark.get obj1_1v2 = 1;;
 
+Mark.get obj1_3v1 = 0;;
+Mark.get obj1_1v3 = 0;;
+
+associate obj1_3v1 obj1_1v3;;
+
+Mark.get obj1_3v1 = 3;;
+Mark.get obj1_1v3 = 1;;
+
+
 print_string "============================= TEST SEPARATE  =======================\n";
 
 separate obj1_1v1 obj1_1v2;;
@@ -69,12 +78,19 @@ separate obj1_1v1 obj1_1v2;;
 Mark.get obj1_1v1 = 0;;
 Mark.get obj1_1v2 = 0;;
 
+separate obj1_3v1 obj1_1v3;;
+
+Mark.get obj1_3v1 = 0;;
+Mark.get obj1_1v3 = 0;;
+
+
+
 print_string "============================= TEST CONTRACT  =======================\n";;
 
 (**********************************************)
 print_string "---------------------------------\n";;
 
-(*let a = ordered_succ obj1_1 obj1_1v1 in
+let a = ordered_succ obj1_1 obj1_1v1 in
     affiche_sommets a;;
 let b = ordered_succ obj1_1 obj1_1v2 in
     affiche_sommets b;;
@@ -82,7 +98,7 @@ let b = ordered_succ obj1_1 obj1_1v2 in
 let lc1 = contract obj1_1 obj1_1v1 obj1_1v2;;
 
 let res = ordered_succ obj1_1 obj1_1v1 in
-    affiche_sommets res;;*)
+    affiche_sommets res;;
 
 print_string "---------------------------------\n";;
 
